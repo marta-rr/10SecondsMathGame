@@ -26,6 +26,7 @@ let gameStatus = {
 
 //Start game and displaying problem
 function updateProblem(){
+    startGame.style.visibility="hidden";
     inputField.style.visibility="visible";
     gameStatus.currentProblem = generateProblem();
     problemQuestions.innerHTML = `${gameStatus.currentProblem.numOne} ${gameStatus.currentProblem.operator} ${gameStatus.currentProblem.numTwo}`
@@ -81,7 +82,6 @@ function countdown() {
 	if (timeLeft > 0) {
 		setTimeout(countdown, 1000);
 	} else{
-   
         resetGame();
     }
 };
@@ -95,7 +95,7 @@ function resetGame(){
     highestScore.innerHTML = "Highest Score: " + gameStatus.highestScore;
     problemQuestions.innerHTML = "";
     inputField.style.visibility="hidden";
-//todo It runs down faster than 10 secs
+    startGame.style.visibility="visible";
     startGame.addEventListener("click", function(){
             timeLeft=11;
             countdown();

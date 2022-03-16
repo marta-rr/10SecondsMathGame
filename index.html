@@ -10,7 +10,7 @@
     <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-    <h1>10 Seconds Math Game</h1>
+    <!-- <h2>10 Seconds Math Game</h2> -->
     <div class="container">
         <button onclick="updateProblem();countdown()" class = "start-game">Start</button>
         <!-- <p id="countdown"></p> -->
@@ -21,9 +21,16 @@
                 <input type="text" class="user-answer" placeholder="Your answer" autocomplete="off">
                 <button>Submit</button>
             </div>
-            <p class = "score"></p>
-            <p class = "highest-score"></p>
+        <!-- <div class="score-board">  
+            <div class="row">
+                <div class="col-6 score">
+                <div class="col-6 highest-score">
+            </div>
+        </div> -->
         </form>
+            <p class = "score">Current Score: 0</p>
+            <p class = "highest-score">Highest Score: 0</p>
+       
         <div id="countdown" style="visibility:hidden">
             <span id="seconds"></span>
         </div>

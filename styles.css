@@ -1,8 +1,13 @@
+html, body{
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color:rgb(90, 174, 196);
+}
+
 #countdown {
     width: 180px;
     height: 160px;
     border-radius: 50%;
-    background-color: lightgrey;
+    background-color: white;
     margin: auto;
 }
 
@@ -10,9 +15,54 @@
     display: block;
     width: 100%;
     margin: auto;
-   
     text-align: center;
     justify-content: center;
     display:flex;
     font-size: 100px;
+}
+
+/* h2{
+    text-align:center;
+    margin:20px;
+    font-weight:bold;
+} */
+
+.container{
+    text-align:center;
+    justify-content:center;
+    margin:auto;
+}
+.start-game{
+    border-radius:5px;
+    background-color:white;
+    width: 80px;
+    height:50px;
+    box-shadow:2px 2px 2px;
+    font-weight:bold;
+    font-size:25px;
+    margin-top:30px;
+}
+
+.questions{
+    font-weight:bold;
+    font-size:45px;
+    padding-top:15px;
+}
+
+.user-answer{
+    margin-bottom:60px;
+}
+
+.score{
+    font-weight: bold;
+    font-size:25px;
+    float:left;
+    padding:25px;
+}
+
+.highest-score{
+    font-weight: bold;
+    font-size:25px;
+    float:right;
+    padding:25px;
 }
