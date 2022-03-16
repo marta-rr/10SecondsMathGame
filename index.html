@@ -12,13 +12,15 @@
   <body>
     <h1>10 Seconds Math Game</h1>
     <div class="container">
-        <button onclick="updateProblem()">Start</button>
+        <button onclick="updateProblem(); downloadTimer()">Start</button>
+        <p id="countdown"></p>
         <div class="questions">
         </div>
         <form action="" class="answer-form">
             <input type="text" class="user-answer" placeholder="Your answer" autocomplete="off">
             <button>Submit</button>
             <p class = "score"></p>
+            <p id="countdown"></p>
         </form>
         <div class="countdown">
         </div>

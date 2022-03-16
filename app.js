@@ -11,6 +11,7 @@ const problemQuestions = document.querySelector(".questions");
 const answerForm = document.querySelector(".answer-form");
 const userAnswer = document.querySelector(".user-answer");
 const userScore = document.querySelector(".score");
+const countdownTimer = document.getElementById("countdown");
 
 
 let gameStatus = {
@@ -69,3 +70,16 @@ function handleSubmit(e){
 
 //     }
 // }
+
+//Countdown Timer
+let timeleft = 10;
+setInterval(function downloadTimer(){
+  if(timeleft <= 0){
+    clearInterval(downloadTimer);
+    countdownTimer.innerHTML = "Finished";
+
+  }else{
+  countdownTimer.innerHTML = timeleft + " seconds remaining";
+  }
+  timeleft -= 1;
+}, 1000);
