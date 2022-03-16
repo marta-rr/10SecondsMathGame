@@ -1,6 +1,7 @@
 html, body{
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    background-color:rgb(90, 174, 196);
+    font-family: Palatino;
+    background-image: url("images/math4.jpeg");
+    background-size:cover;
 }
 
 #countdown {
@@ -9,6 +10,7 @@ html, body{
     border-radius: 50%;
     background-color: white;
     margin: auto;
+    border-style:double
 }
 
 #seconds {
@@ -19,6 +21,7 @@ html, body{
     justify-content: center;
     display:flex;
     font-size: 100px;
+    color:black;
 }
 
 /* h2{
@@ -34,19 +37,28 @@ html, body{
 }
 .start-game{
     border-radius:5px;
-    background-color:white;
-    width: 80px;
-    height:50px;
+    background-color:rgb(150, 184, 130);
+    width: 90px;
+    height:55px;
     box-shadow:2px 2px 2px;
     font-weight:bold;
     font-size:25px;
     margin-top:30px;
 }
 
+#submit-button{
+    background-color:white;
+    font-weight:bold;
+
+}
+
 .questions{
     font-weight:bold;
-    font-size:45px;
+    font-size:60px;
     padding-top:15px;
+    color:white;
+    text-shadow:3px 3px 3px;
+
 }
 
 .user-answer{
@@ -58,6 +70,8 @@ html, body{
     font-size:25px;
     float:left;
     padding:25px;
+    border-style: double;
+    background-color:white;
 }
 
 .highest-score{
@@ -65,4 +79,6 @@ html, body{
     font-size:25px;
     float:right;
     padding:25px;
+    border-style: double;
+    background-color:white;
 }
