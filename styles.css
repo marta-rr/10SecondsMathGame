@@ -36,10 +36,10 @@ html, body{
     margin:auto;
 }
 .start-game{
-    border-radius:5px;
+    border-radius:50px;
     background-color:rgb(150, 184, 130);
     width: 90px;
-    height:55px;
+    height:60px;
     box-shadow:2px 2px 2px;
     font-weight:bold;
     font-size:25px;

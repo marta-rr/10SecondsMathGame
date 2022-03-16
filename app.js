@@ -73,7 +73,7 @@ function handleSubmit(e){
 }
 
 //Countdown Timer
-let timeLeft = 11;
+let timeLeft=11;
 function countdown() {
     countdownTimer.style.visibility ="visible";
     countdownDeco.style.visibility ="visible";
@@ -88,7 +88,7 @@ function countdown() {
 
 //When countdown = 0
 function resetGame(){
-    if(timeLeft == 0){
+    timeLeft=11;
     gameStatus.highestScore = gameStatus.score;
     gameStatus.score = 0;
     userScore.innerHTML = "Current Score: " + gameStatus.score;
@@ -96,9 +96,4 @@ function resetGame(){
     problemQuestions.innerHTML = "";
     inputField.style.visibility="hidden";
     startGame.style.visibility="visible";
-    startGame.addEventListener("click", function(){
-            timeLeft=11;
-            countdown();
-        })
-    }
 }
