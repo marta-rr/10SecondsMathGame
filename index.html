@@ -12,14 +12,17 @@
   <body>
     <h1>10 Seconds Math Game</h1>
     <div class="container">
-        <button onclick="updateProblem(); downloadTimer()">Start</button>
+        <button onclick="updateProblem(); startCountdown()">Start</button>
         <p id="countdown"></p>
         <div class="questions">
         </div>
         <form action="" class="answer-form">
-            <input type="text" class="user-answer" placeholder="Your answer" autocomplete="off">
-            <button>Submit</button>
+            <div class="input-field" style="visibility:hidden">
+                <input type="text" class="user-answer" placeholder="Your answer" autocomplete="off">
+                <button>Submit</button>
+            </div>
             <p class = "score"></p>
+            <p class = "highest-score"></p>
             <p id="countdown"></p>
         </form>
         <div class="countdown">

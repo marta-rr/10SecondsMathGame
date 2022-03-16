@@ -12,17 +12,22 @@ const answerForm = document.querySelector(".answer-form");
 const userAnswer = document.querySelector(".user-answer");
 const userScore = document.querySelector(".score");
 const countdownTimer = document.getElementById("countdown");
+const highestScore = document.querySelector(".highest-score");
+const inputField = document.querySelector(".input-field");
 
 
 let gameStatus = {
     score:0,
-    wrongAnswers: 0
+    highestScore: 0
 }
+
 
 //Start game and displaying problem
 function updateProblem(){
+    inputField.style.visibility="visible";
     gameStatus.currentProblem = generateProblem();
     problemQuestions.innerHTML = `${gameStatus.currentProblem.numOne} ${gameStatus.currentProblem.operator} ${gameStatus.currentProblem.numTwo}`
+    //Clear input field 
     userAnswer.value = "";
     userAnswer.focus();
 }
@@ -56,30 +61,42 @@ function handleSubmit(e){
     if(parseInt(userAnswer.value, 10) === correctAnswer){
        updateProblem();
        gameStatus.score++;
-       userScore.innerHTML = gameStatus.score;
-       //todo Clear input field
+       userScore.innerHTML = "Current Score: " + gameStatus.score;
     } else{
-            gameStatus.wrongAnswers++;
             alert("wrong")
         }
     // endOfGame();
 }
 
-// function endOfGame(){
-//     if(countdown == 0){
-
-//     }
-// }
+//todo make it work only when pressing start button
 
 //Countdown Timer
 let timeleft = 10;
-setInterval(function downloadTimer(){
+function startCountdown(){setInterval(function downloadTimer(){
   if(timeleft <= 0){
     clearInterval(downloadTimer);
-    countdownTimer.innerHTML = "Finished";
+    countdownTimer.innerHTML = "Time is over";
+    resetGame()
 
   }else{
   countdownTimer.innerHTML = timeleft + " seconds remaining";
   }
   timeleft -= 1;
 }, 1000);
+}
+
+
+function resetGame(){
+
+    if(timeleft == 0){
+    gameStatus.highestScore = gameStatus.score;
+    gameStatus.score = 0;
+    userScore.innerHTML = "Current Score: " + gameStatus.score;
+    highestScore.innerHTML = "Highest Score: " + gameStatus.highestScore;
+    problemQuestions.innerHTML = "";
+    inputField.style.visibility="hidden";
+    // timeleft=10;
+    // startCountdown();
+
+    }
+}
