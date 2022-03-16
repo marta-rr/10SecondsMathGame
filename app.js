@@ -11,7 +11,8 @@ const problemQuestions = document.querySelector(".questions");
 const answerForm = document.querySelector(".answer-form");
 const userAnswer = document.querySelector(".user-answer");
 const userScore = document.querySelector(".score");
-const countdownTimer = document.getElementById("countdown");
+const countdownTimer = document.getElementById("seconds");
+const countdownDeco = document.getElementById("countdown");
 const highestScore = document.querySelector(".highest-score");
 const inputField = document.querySelector(".input-field");
 const startGame = document.querySelector(".start-game");
@@ -60,23 +61,27 @@ function handleSubmit(e){
     }
     //Display either right or wrong, update score, get next problem if right
     if(parseInt(userAnswer.value, 10) === correctAnswer){
-       updateProblem();
-       gameStatus.score++;
-       userScore.innerHTML = "Current Score: " + gameStatus.score;
-    } else{
-            alert("wrong")
-        }
+        timeLeft++;
+        updateProblem();
+        gameStatus.score++;
+        userScore.innerHTML = "Current Score: " + gameStatus.score;
+    }else{
+        userAnswer.value = "";
+        userAnswer.focus();
+    }
 }
 
 //Countdown Timer
 let timeLeft = 11;
 function countdown() {
+    countdownTimer.style.visibility ="visible";
+    countdownDeco.style.visibility ="visible";
 	timeLeft--;
 	countdownTimer.innerHTML = timeLeft;
 	if (timeLeft > 0) {
 		setTimeout(countdown, 1000);
 	} else{
-        countdownTimer.innerHTML = "Time is over";
+   
         resetGame();
     }
 };
