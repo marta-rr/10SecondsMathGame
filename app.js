@@ -14,6 +14,7 @@ const userScore = document.querySelector(".score");
 const countdownTimer = document.getElementById("countdown");
 const highestScore = document.querySelector(".highest-score");
 const inputField = document.querySelector(".input-field");
+const startGame = document.querySelector(".start-game");
 
 
 let gameStatus = {
@@ -27,7 +28,7 @@ function updateProblem(){
     inputField.style.visibility="visible";
     gameStatus.currentProblem = generateProblem();
     problemQuestions.innerHTML = `${gameStatus.currentProblem.numOne} ${gameStatus.currentProblem.operator} ${gameStatus.currentProblem.numTwo}`
-    //Clear input field 
+    //Clear input field
     userAnswer.value = "";
     userAnswer.focus();
 }
@@ -65,38 +66,34 @@ function handleSubmit(e){
     } else{
             alert("wrong")
         }
-    // endOfGame();
 }
-
-//todo make it work only when pressing start button
 
 //Countdown Timer
-let timeleft = 10;
-function startCountdown(){setInterval(function downloadTimer(){
-  if(timeleft <= 0){
-    clearInterval(downloadTimer);
-    countdownTimer.innerHTML = "Time is over";
-    resetGame()
+let timeLeft = 11;
+function countdown() {
+	timeLeft--;
+	countdownTimer.innerHTML = timeLeft;
+	if (timeLeft > 0) {
+		setTimeout(countdown, 1000);
+	} else{
+        countdownTimer.innerHTML = "Time is over";
+        resetGame();
+    }
+};
 
-  }else{
-  countdownTimer.innerHTML = timeleft + " seconds remaining";
-  }
-  timeleft -= 1;
-}, 1000);
-}
-
-
+//When countdown = 0
 function resetGame(){
-
-    if(timeleft == 0){
+    if(timeLeft == 0){
     gameStatus.highestScore = gameStatus.score;
     gameStatus.score = 0;
     userScore.innerHTML = "Current Score: " + gameStatus.score;
     highestScore.innerHTML = "Highest Score: " + gameStatus.highestScore;
     problemQuestions.innerHTML = "";
     inputField.style.visibility="hidden";
-    // timeleft=10;
-    // startCountdown();
-
+//todo It runs down faster than 10 secs
+    startGame.addEventListener("click", function(){
+            timeLeft=11;
+            countdown();
+        })
     }
 }
