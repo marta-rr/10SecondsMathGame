@@ -36,14 +36,16 @@ html, body{
     margin:auto;
 }
 .start-game{
-    border-radius:50px;
-    background-color:rgb(150, 184, 130);
-    width: 90px;
+    border-radius:20px;
+    border:solid;
+    background-color:rgb(120, 184, 84);
+    width: 120px;
     height:60px;
-    box-shadow:2px 2px 2px;
+    /* box-shadow:2px 2px 2px; */
     font-weight:bold;
-    font-size:25px;
+    font-size:23px;
     margin-top:30px;
+    text-shadow:1px 1px 2px;
 }
 
 #submit-button{
