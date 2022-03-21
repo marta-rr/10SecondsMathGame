@@ -9,10 +9,16 @@ const inputField = document.querySelector(".input-field");
 const startGame = document.querySelector(".start-game");
 const scoreBoard = document.querySelector(".score-board");
 const operatorOptions = document.querySelector(".operator-options");
+const operatorSum = document.getElementById("myCheck+");
+const operatorSub = document.getElementById("myCheck-");
+const operatorMult = document.getElementById("myCheckx");
+const operatorDiv = document.getElementById("myCheck/");
 
 
 let gameStatus = {
     score:0,
+    //Keep track of max score value
+    currentScore: 0,
     highestScore: 0
 }
 
@@ -34,14 +40,17 @@ function updateProblem(){
 function generateNumber(num){
     return Math.floor(Math.random() * num);
 }
+
 //Generate problem when game starts and after every answer
 function generateProblem(){
     return{
         numOne: generateNumber(10),
         numTwo: generateNumber(10),
-        operator:['+', '-', '/', 'x'][generateNumber(3)]//[generateNumber(number of operators -1)]
+        operator:['+', '-', 'x'][generateNumber(2)]
     }
 }
+
+
 
 answerForm.addEventListener("submit", handleSubmit)
 
@@ -91,11 +100,20 @@ function countdown() {
 
 //When countdown = 0
 function resetGame(){
+//Resetting timer
     timeLeft=11;
-    gameStatus.highestScore = gameStatus.score;
+//Getting highest Score
+    let sliced = Object.fromEntries(
+        Object.entries(gameStatus).slice(0, 3)
+    )
+    let values = Object.values(sliced);
+    let max = Math.max(...values);
+    gameStatus.currentScore = max;
+//Resetting Score
     gameStatus.score = 0;
+//Displaying on DOM
     userScore.innerHTML = "Current Score: " + gameStatus.score;
-    highestScore.innerHTML = "Highest Score: " + gameStatus.highestScore;
+    highestScore.innerHTML = "Highest Score: " + gameStatus.currentScore;
     problemQuestions.innerHTML = "";
     inputField.style.visibility="hidden";
     startGame.style.visibility="visible";
