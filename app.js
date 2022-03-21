@@ -8,6 +8,7 @@ const highestScore = document.querySelector(".highest-score");
 const inputField = document.querySelector(".input-field");
 const startGame = document.querySelector(".start-game");
 const scoreBoard = document.querySelector(".score-board");
+const operatorOptions = document.querySelector(".operator-options");
 
 
 let gameStatus = {
@@ -30,15 +31,15 @@ function updateProblem(){
 
 
 //Generate a number till 10, number could be changed by passing num to the function
-function generateNumber(){
-    return Math.floor(Math.random() * 10);
+function generateNumber(num){
+    return Math.floor(Math.random() * num);
 }
 //Generate problem when game starts and after every answer
 function generateProblem(){
     return{
-        numOne: generateNumber(),
-        numTwo: generateNumber(),
-        operator:['+']//[generateNumber(number of operators -1)]
+        numOne: generateNumber(10),
+        numTwo: generateNumber(10),
+        operator:['+', '-', '/', 'x'][generateNumber(3)]//[generateNumber(number of operators -1)]
     }
 }
 
@@ -52,6 +53,15 @@ function handleSubmit(e){
     //Calculate it is either right or wrong
     if(p.operator == "+"){
         correctAnswer = p.numOne + p.numTwo;
+    }
+    if(p.operator == "-"){
+        correctAnswer = p.numOne - p.numTwo;
+    }
+    if(p.operator == "/"){
+        correctAnswer = p.numOne / p.numTwo;
+    }
+     if(p.operator == "x"){
+        correctAnswer = p.numOne * p.numTwo;
     }
     //Display either right or wrong, update score, get next problem if right
     if(parseInt(userAnswer.value, 10) === correctAnswer){

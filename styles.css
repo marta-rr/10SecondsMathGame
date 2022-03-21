@@ -86,8 +86,11 @@ h1{
     background-color:rgb(37, 179, 37);
     width: 120px;
     height:60px;
-    font-size:25px;
+    font-size:22px;
     margin-top:10px;
+    border:none;
+    font-weight:bold;
+    color:rgb(65, 63, 63)
 }
 
 #submit-button{
@@ -165,3 +168,8 @@ h1{
     }
 }
 
+.operator-options{
+    font-size:20px;
+    color:white;
+    padding-top:20px;
+}
