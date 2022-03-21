@@ -42,7 +42,7 @@ h1{
 
 :root {
     /* Set neon color */
-    --neon-border-color:rgb(39, 219, 39);
+    --neon-border-color:rgb(37, 179, 37);
 }
 
 @keyframes flicker {
@@ -82,12 +82,11 @@ h1{
     }
 }
 .start-game{
-    font-weight:700;
     animation: flicker 1.5s infinite alternate;
-    background-color:rgb(39, 219, 39);
+    background-color:rgb(37, 179, 37);
     width: 120px;
     height:60px;
-    font-size:23px;
+    font-size:25px;
     margin-top:10px;
 }
 
@@ -135,11 +134,9 @@ h1{
 }
 
 .logo-1 {
-    font-size: 35px;
+    font-size: 40px;
     text-transform: uppercase;
-    font-family: "Archivo Black",
-    "Archivo",
-    sans-serif;
+    font-family: palatino;
     color: white;
     animation: neon 3s infinite;
     display: block;
