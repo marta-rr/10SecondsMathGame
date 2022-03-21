@@ -10,10 +10,10 @@
     <link href="styles.css" rel="stylesheet">
   </head>
   <body>
-    <!-- <h2>10 Seconds Math Game</h2> -->
+        <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+        <p class="logo-1">10 seconds Math Game</p>
     <div class="container">
         <button onclick="updateProblem();countdown()" class = "start-game">START</button>
-        <!-- <p id="countdown"></p> -->
         <div class="questions">
         </div>
         <form action="" class="answer-form">
@@ -21,16 +21,11 @@
                 <input type="text" class="user-answer" placeholder="Your answer" autocomplete="off">
                 <button id = "submit-button">Submit</button>
             </div>
-        <!-- <div class="score-board">  
-            <div class="row">
-                <div class="col-6 score">
-                <div class="col-6 highest-score">
-            </div>
-        </div> -->
         </form>
+        <div class="score-board" style="visibility:hidden">
             <p class = "score">Current Score: 0</p>
             <p class = "highest-score">Highest Score: 0</p>
-       
+        </div>
         <div id="countdown" style="visibility:hidden">
             <span id="seconds"></span>
         </div>

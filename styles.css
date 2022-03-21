@@ -24,26 +24,71 @@ html, body{
     color:black;
 }
 
-/* h2{
+h1{
     text-align:center;
     margin:20px;
     font-weight:bold;
-} */
+    color:white;
+}
 
 .container{
     text-align:center;
     justify-content:center;
     margin:auto;
 }
+
+/* Neon style for Start button */
+@import url(https://fonts.googleapis.com/css?family=Exo+2:200i);
+
+:root {
+    /* Set neon color */
+    --neon-border-color:rgb(39, 219, 39);
+}
+
+@keyframes flicker {
+
+    0%,
+    19%,
+    21%,
+    23%,
+    25%,
+    54%,
+    56%,
+    100% {
+
+        text-shadow:
+            -0.2rem -0.2rem 1rem #fff,
+            0.2rem 0.2rem 1rem #fff,
+            0 0 2rem var(--neon-text-color),
+            0 0 4rem var(--neon-text-color),
+            0 0 6rem var(--neon-text-color),
+            0 0 8rem var(--neon-text-color),
+            0 0 10rem var(--neon-text-color);
+
+        box-shadow:
+            0 0 .5rem #fff,
+            inset 0 0 .5rem #fff,
+            0 0 2rem var(--neon-border-color),
+            inset 0 0 2rem var(--neon-border-color),
+            0 0 4rem var(--neon-border-color),
+            inset 0 0 4rem var(--neon-border-color);
+    }
+
+    20%,
+    24%,
+    55% {
+        text-shadow: none;
+        box-shadow: none;
+    }
+}
 .start-game{
-    border-radius:20px;
-    border:solid;
-    background-color:rgb(120, 184, 84);
+    font-weight:700;
+    animation: flicker 1.5s infinite alternate;
+    background-color:rgb(39, 219, 39);
     width: 120px;
     height:60px;
     font-size:23px;
-    margin-top:30px;
-    text-shadow:1px 1px 1px;
+    margin-top:10px;
 }
 
 #submit-button{
@@ -55,7 +100,6 @@ html, body{
 .questions{
     font-weight:bold;
     font-size:60px;
-    padding-top:15px;
     color:white;
     text-shadow:3px 3px 3px;
 
@@ -82,3 +126,45 @@ html, body{
     border-style: double;
     background-color:white;
 }
+
+/* Neon title */
+
+:root {
+    --shadow-color: #FF9E9E;
+    --shadow-color-light: white;
+}
+
+.logo-1 {
+    font-size: 35px;
+    text-transform: uppercase;
+    font-family: "Archivo Black",
+    "Archivo",
+    sans-serif;
+    color: white;
+    animation: neon 3s infinite;
+    display: block;
+    height: auto;
+    text-align: center;
+    margin-top:20px;
+}
+
+@keyframes neon {
+    0% {
+        text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+            0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+            0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
+    }
+
+    50% {
+        text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+            0 0 5px var(--shadow-color-light), 0 0 15px var(--shadow-color-light), 0 0 25px var(--shadow-color-light),
+            0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 60px var(--shadow-color), 0 0 80px var(--shadow-color), 0 0 110px var(--shadow-color), 0 0 210px var(--shadow-color);
+    }
+
+    100% {
+        text-shadow: -1px -1px 1px var(--shadow-color-light), -1px 1px 1px var(--shadow-color-light), 1px -1px 1px var(--shadow-color-light), 1px 1px 1px var(--shadow-color-light),
+            0 0 3px var(--shadow-color-light), 0 0 10px var(--shadow-color-light), 0 0 20px var(--shadow-color-light),
+            0 0 30px var(--shadow-color), 0 0 40px var(--shadow-color), 0 0 50px var(--shadow-color), 0 0 70px var(--shadow-color), 0 0 100px var(--shadow-color), 0 0 200px var(--shadow-color);
+    }
+}
+

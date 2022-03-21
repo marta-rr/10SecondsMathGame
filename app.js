@@ -1,12 +1,3 @@
-// Start the game
-// Make the problems : start by +, option to add more;
-// Create countdown
-// End game if countdown = 0;
-// if correct answer = +1 to countdown
-// Calculate and show score
-// Restart game if countdown = 0
-// Keep track of highest score
-
 const problemQuestions = document.querySelector(".questions");
 const answerForm = document.querySelector(".answer-form");
 const userAnswer = document.querySelector(".user-answer");
@@ -16,6 +7,7 @@ const countdownDeco = document.getElementById("countdown");
 const highestScore = document.querySelector(".highest-score");
 const inputField = document.querySelector(".input-field");
 const startGame = document.querySelector(".start-game");
+const scoreBoard = document.querySelector(".score-board");
 
 
 let gameStatus = {
@@ -28,6 +20,7 @@ let gameStatus = {
 function updateProblem(){
     startGame.style.visibility="hidden";
     inputField.style.visibility="visible";
+    scoreBoard.style.visibility="visible";
     gameStatus.currentProblem = generateProblem();
     problemQuestions.innerHTML = `${gameStatus.currentProblem.numOne} ${gameStatus.currentProblem.operator} ${gameStatus.currentProblem.numTwo}`
     //Clear input field
