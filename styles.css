@@ -117,7 +117,7 @@ h1{
     float:left;
     padding:25px;
     border-style: double;
-    background-color:white;
+    background-color:rgb(226, 223, 223);
 }
 
 .highest-score{
@@ -126,7 +126,7 @@ h1{
     float:right;
     padding:25px;
     border-style: double;
-    background-color:white;
+    background-color:rgb(226, 223, 223);
 }
 
 /* Neon title */

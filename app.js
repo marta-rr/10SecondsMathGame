@@ -115,6 +115,7 @@ function resetGame(){
 //Resetting Score
     gameStatus.score = 0;
 //Displaying on DOM
+    rangeBar.style.visibility = "visible";
     userScore.innerHTML = "Current Score: " + gameStatus.score;
     highestScore.innerHTML = "Highest Score: " + gameStatus.currentScore;
     problemQuestions.innerHTML = "";
