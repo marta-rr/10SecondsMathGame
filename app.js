@@ -57,11 +57,21 @@ function generateNumber(maxNumber){
 
 //Generate problem when game starts and after every answer
 function generateProblem(){
-    return{
+    let problem = {
         numOne: generateNumber(getMaxNumber()),
         numTwo: generateNumber(getMaxNumber()),
         operator:getUserOperators()[generateNumber(getUserOperators().length)]
     }
+    if(problem.operator === '-' && ((problem.numOne - problem.numTwo) < 0)){
+        let temp = problem.numOne;
+        problem.numOne = problem.numTwo;
+        problem.numTwo = temp;
+    }
+    while(problem.operator === '/' && ((problem.numOne % problem.numTwo) !== 0)){
+        problem.numOne = generateNumber(getMaxNumber());
+        problem.numTwo = generateNumber(getMaxNumber());
+    }
+    return problem;
 }
 
 function getUserOperators(){
