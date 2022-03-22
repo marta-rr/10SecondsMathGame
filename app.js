@@ -13,6 +13,10 @@ const operatorSum = document.getElementById("myCheck+");
 const operatorSub = document.getElementById("myCheck-");
 const operatorMult = document.getElementById("myCheckx");
 const operatorDiv = document.getElementById("myCheck/");
+const rangeNumber = document.getElementById("range-number");
+const rangeBar = document.querySelector(".range-bar");
+
+
 
 
 let gameStatus = {
@@ -25,6 +29,7 @@ let gameStatus = {
 
 //Start game and displaying problem
 function updateProblem(){
+    rangeBar.style.visibility = "hidden";
     startGame.style.visibility="hidden";
     inputField.style.visibility="visible";
     scoreBoard.style.visibility="visible";
@@ -35,18 +40,26 @@ function updateProblem(){
     userAnswer.focus();
 }
 
+function updateTextInput(val){
+    document.getElementById('textInput').value = val;
+}
 
-//Generate a number till 10, number could be changed by passing num to the function
-function generateNumber(num){
-    return Math.floor(Math.random() * num);
+function getMaxNumber(){
+    return document.getElementById('textInput').value;
+}
+
+
+//Generate random Number up to input user preference
+function generateNumber(maxNumber){
+    return Math.floor(Math.random() * maxNumber);
 }
 
 //Generate problem when game starts and after every answer
 function generateProblem(){
     return{
-        numOne: generateNumber(10),
-        numTwo: generateNumber(10),
-        operator:['+', '-', 'x'][generateNumber(2)]
+        numOne: generateNumber(getMaxNumber()),
+        numTwo: generateNumber(getMaxNumber()),
+        operator:['+']
     }
 }
 
@@ -58,19 +71,9 @@ function handleSubmit(e){
     e.preventDefault();
     let correctAnswer;
     const p = gameStatus.currentProblem;
-    //todo Make if statements for each operator
     //Calculate it is either right or wrong
     if(p.operator == "+"){
         correctAnswer = p.numOne + p.numTwo;
-    }
-    if(p.operator == "-"){
-        correctAnswer = p.numOne - p.numTwo;
-    }
-    if(p.operator == "/"){
-        correctAnswer = p.numOne / p.numTwo;
-    }
-     if(p.operator == "x"){
-        correctAnswer = p.numOne * p.numTwo;
     }
     //Display either right or wrong, update score, get next problem if right
     if(parseInt(userAnswer.value, 10) === correctAnswer){
@@ -118,3 +121,4 @@ function resetGame(){
     inputField.style.visibility="hidden";
     startGame.style.visibility="visible";
 }
+
