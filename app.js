@@ -21,7 +21,7 @@ const rangeBar = document.querySelector(".range-bar");
 
 let gameStatus = {
     score:0,
-    //Keep track of max score value
+    //Temp var to keep track of max score value
     currentScore: 0,
     highestScore: 0
 }
@@ -29,6 +29,7 @@ let gameStatus = {
 
 //Start game and displaying problem
 function updateProblem(){
+    operatorOptions.style.visibility = "hidden";
     rangeBar.style.visibility = "hidden";
     startGame.style.visibility="hidden";
     inputField.style.visibility="visible";
@@ -40,10 +41,12 @@ function updateProblem(){
     userAnswer.focus();
 }
 
+//Display value of range bar on DOM
 function updateTextInput(val){
     document.getElementById('textInput').value = val;
 }
 
+//Access value from range bar
 function getMaxNumber(){
     return document.getElementById('textInput').value;
 }
@@ -54,26 +57,7 @@ function generateNumber(maxNumber){
     return Math.floor(Math.random() * maxNumber);
 }
 
-
-//Generate problem when game starts and after every answer
-function generateProblem(){
-    let problem = {
-        numOne: generateNumber(getMaxNumber()),
-        numTwo: generateNumber(getMaxNumber()),
-        operator:getUserOperators()[generateNumber(getUserOperators().length)]
-    }
-    if(problem.operator === '-' && ((problem.numOne - problem.numTwo) < 0)){
-        let temp = problem.numOne;
-        problem.numOne = problem.numTwo;
-        problem.numTwo = temp;
-    }
-    while(problem.operator === '/' && ((problem.numOne % problem.numTwo) !== 0)){
-        problem.numOne = generateNumber(getMaxNumber());
-        problem.numTwo = generateNumber(getMaxNumber());
-    }
-    return problem;
-}
-
+//Retrieve input from operators, user preference
 function getUserOperators(){
     let operators = []
     if(operatorSum.checked){
@@ -92,9 +76,31 @@ function getUserOperators(){
 }
 
 
+//Generate problem  and handle specific situations of non-negative numbers when '-' and only whole numbers when '/'
+function generateProblem(){
+    let problem = {
+        numOne: generateNumber(getMaxNumber()),
+        numTwo: generateNumber(getMaxNumber()),
+        operator:getUserOperators()[generateNumber(getUserOperators().length)]
+    }
+    //Handle negative numbers for '-'
+    if(problem.operator === '-' && ((problem.numOne - problem.numTwo) < 0)){
+        let temp = problem.numOne;
+        problem.numOne = problem.numTwo;
+        problem.numTwo = temp;
+    }
+    //Handle only whole numbers for '/'
+    while(problem.operator === '/' && ((problem.numOne % problem.numTwo) !== 0)){
+        problem.numOne = generateNumber(getMaxNumber());
+        problem.numTwo = generateNumber(getMaxNumber());
+    }
+    return problem;
+}
+
 answerForm.addEventListener("submit", handleSubmit)
 
 function handleSubmit(e){
+    //Prevent refresh default behaviour 
     e.preventDefault();
     let correctAnswer;
     const p = gameStatus.currentProblem;
@@ -137,20 +143,21 @@ function countdown() {
     }
 };
 
-//When countdown = 0
+//Reset Game: When countdown = 0
 function resetGame(){
-//Resetting timer
+    //Resetting timer
     timeLeft=11;
-//Getting highest Score
+    //Getting highest Score
     let sliced = Object.fromEntries(
         Object.entries(gameStatus).slice(0, 3)
     )
     let values = Object.values(sliced);
     let max = Math.max(...values);
     gameStatus.currentScore = max;
-//Resetting Score
+    //Resetting Score
     gameStatus.score = 0;
-//Displaying on DOM
+    //Displaying on DOM
+    operatorOptions.style.visibility = "visible";
     rangeBar.style.visibility = "visible";
     userScore.innerHTML = "Current Score: " + gameStatus.score;
     highestScore.innerHTML = "Highest Score: " + gameStatus.currentScore;

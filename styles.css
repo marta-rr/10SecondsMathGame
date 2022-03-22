@@ -26,7 +26,7 @@ html, body{
 
 h1{
     text-align:center;
-    margin:20px;
+    margin:15px;
     font-weight:bold;
     color:white;
 }
@@ -87,7 +87,7 @@ h1{
     width: 120px;
     height:60px;
     font-size:22px;
-    margin-top:10px;
+    margin-top:5px;
     border:none;
     font-weight:bold;
     color:rgb(65, 63, 63)
@@ -181,10 +181,25 @@ h1{
 }
 
 .range-bar{
-    margin-top:30px;
+    margin-top:15px;
 }
 
 .number-limit{
     color:white;
     font-size:25px;
+}
+
+.operator-options{
+    font-size:25px;
+    background-color:white;
+    color:black;
+    width:170px;
+    height: 75px;
+    justify-content:center;
+    border-radius:10px;
+    margin-top:20px;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    border-style:double
 }
