@@ -54,15 +54,32 @@ function generateNumber(maxNumber){
     return Math.floor(Math.random() * maxNumber);
 }
 
+
 //Generate problem when game starts and after every answer
 function generateProblem(){
     return{
         numOne: generateNumber(getMaxNumber()),
         numTwo: generateNumber(getMaxNumber()),
-        operator:['+']
+        operator:getUserOperators()[generateNumber(getUserOperators().length)]
     }
 }
 
+function getUserOperators(){
+    let operators = []
+    if(operatorSum.checked){
+        operators.push('+');
+    }
+    if(operatorSub.checked){
+        operators.push('-');
+    }
+    if(operatorDiv.checked){
+        operators.push('/');
+    }
+    if(operatorMult.checked){
+        operators.push('x');
+    }
+    return operators;
+}
 
 
 answerForm.addEventListener("submit", handleSubmit)
@@ -74,6 +91,15 @@ function handleSubmit(e){
     //Calculate it is either right or wrong
     if(p.operator == "+"){
         correctAnswer = p.numOne + p.numTwo;
+    }
+    else if(p.operator == "-"){
+        correctAnswer = p.numOne - p.numTwo;
+    }
+    else if(p.operator == "/"){
+        correctAnswer = p.numOne / p.numTwo;
+    }
+    else if(p.operator == "x"){
+        correctAnswer = p.numOne * p.numTwo;
     }
     //Display either right or wrong, update score, get next problem if right
     if(parseInt(userAnswer.value, 10) === correctAnswer){
